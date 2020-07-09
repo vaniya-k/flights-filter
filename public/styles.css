@@ -1,19 +1,19 @@
 .container {
   width: 100%;
   height: 98vh;
-  background-color: cornsilk;
+  background-color: burlywood;
 }
 
 .controls {
   width: 250px;
-  height: 600px;
-  background-color: coral;
+  height: 400px;
+  background-color: cornsilk;
   display: inline-block;
 }
 
 .list {
   display: inline-block;
-  background-color: burlywood;
+  background-color: coral;
 }
 
 .price-input-wrong {
