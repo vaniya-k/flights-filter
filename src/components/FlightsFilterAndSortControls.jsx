@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 
 const PRICE_REGEXP = /^([+-]?[1-9]\d*|0)$/;
 
-const FlightsFilterControls = ({sortType, onSortTypeChange, oneSegmentOnly, onOneSegmentOnlyToggle, priceRange, onPriceRangeChange}) => {
+const FlightsFilterAndSortControls = ({sortType, onSortTypeChange, oneSegmentOnly, onOneSegmentOnlyToggle, priceRange, onPriceRangeChange}) => {
   const [isMinPriceValid, setIsMinPriceValid] = useState(true);
   const [isMaxPriceValid, setIsMaxPriceValid] = useState(true);
   const [minPrice, setMinPrice] = useState(priceRange[0]);
   const [maxPrice, setMaxPrice] = useState(priceRange[1]);
-
+  
 
   useEffect(() => {
     (PRICE_REGEXP.test(minPrice) || minPrice === ``) ? setIsMinPriceValid(true) : setIsMinPriceValid(false);
@@ -18,15 +18,12 @@ const FlightsFilterControls = ({sortType, onSortTypeChange, oneSegmentOnly, onOn
     };
   }, [minPrice, maxPrice]);
 
-
   const handlePriceRangeEnter = (evt) => {
     if(evt.keyCode === 13) {
       evt.preventDefault();
 
-      console.log([minPrice, maxPrice])
-
       if(isMinPriceValid && isMaxPriceValid) {
-        onPriceRangeChange([minPrice, maxPrice])
+        onPriceRangeChange([(minPrice === ``) ? `` : parseInt(minPrice), (maxPrice === ``) ? `` : parseInt(maxPrice)])
       };
     }
   };
@@ -78,13 +75,13 @@ const FlightsFilterControls = ({sortType, onSortTypeChange, oneSegmentOnly, onOn
         <div>
           <label>
             От:&nbsp;
-            <input className={!isMinPriceValid ? `price-input-wrong` : null} value={minPrice} onChange={handleMinPriceChange} onKeyUp={handlePriceRangeEnter} type="text"/>
+            <input className={!isMinPriceValid ? `price-input-wrong price-input` : `price-input`} value={minPrice} onChange={handleMinPriceChange} onKeyUp={handlePriceRangeEnter} type="text" placeholder="после ввода - Enter"/>
           </label>
         </div>
         <div>
           <label>
             До:&nbsp;
-            <input className={!isMaxPriceValid ? `price-input-wrong` : null} value={maxPrice} onChange={handleMaxPriceChange} onKeyUp={handlePriceRangeEnter} type="text"/>
+            <input className={!isMaxPriceValid ? `price-input-wrong price-input` : `price-input`} value={maxPrice} onChange={handleMaxPriceChange} onKeyUp={handlePriceRangeEnter} type="text" placeholder="после ввода - Enter"/>
           </label>
         </div>
       </form>
@@ -92,4 +89,4 @@ const FlightsFilterControls = ({sortType, onSortTypeChange, oneSegmentOnly, onOn
   )
 }
 
-export default FlightsFilterControls;
+export default FlightsFilterAndSortControls;
