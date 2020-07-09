@@ -1,10 +1,9 @@
 import React from 'react';
+import FlightsPageContainer from './FlightsPageContainer.jsx';
 
 const App = () => {
   return (
-    <h4>
-        TEST
-    </h4>
+    <FlightsPageContainer/>
   )
 };
 

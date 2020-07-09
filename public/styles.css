@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  height: 98vh;
+  background-color: cornsilk;
+}
+
+.controls {
+  width: 250px;
+  height: 600px;
+  background-color: coral;
+  display: inline-block;
+}
+
+.list {
+  display: inline-block;
+  background-color: burlywood;
+}
+
+.price-input-wrong {
+  background-color: lightpink;
+}
