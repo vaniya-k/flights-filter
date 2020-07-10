@@ -11,3 +11,6 @@ npm install
 npm run backend
 \
 npm run start
+\
+\
+Проект будет доступен по http://localhost:3000/
